@@ -25,6 +25,7 @@ classdef SimulationModelTest < matlab.unittest.TestCase
             testCase.model.simulate(parameters);
 
             testCase.verifyNotEmpty(testCase.model.SimData);
+            testCase.verifyClass(testCase.model.SimData, 'SimData')
             testCase.verifyNotEmpty(testCase.model.SimDataTable);
             testCase.verifyLessThanOrEqual(height(testCase.model.SimDataTable), ...
                 length(testCase.model.SimData.Time));
