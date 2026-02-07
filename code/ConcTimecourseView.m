@@ -1,8 +1,6 @@
 classdef ConcTimecourseView < handle
     
-    properties ( Access = private ) 
-        Model
-        
+    properties ( Access = private )
         ConcColors = [0.30,0.75,0.93;...
                       0.86,0.55,0.41;...
                       0.91,0.73,0.42]; % colors to plot concentrations
@@ -60,7 +58,6 @@ classdef ConcTimecourseView < handle
             obj.DataListener = dataListener;
             
             % save objects
-            obj.Model = model;
             obj.Axes = ax;
             
         end % constructor
@@ -70,8 +67,8 @@ classdef ConcTimecourseView < handle
     
     methods ( Access = private )
         
-        function update(obj,~,~)
-            t = obj.Model.SimDataTable;
+        function update(obj,srcModel,~)
+            t = srcModel.SimDataTable;
 
             set(obj.lhDrug,'XData',t.Time, 'YData',t.Drug);
             set(obj.lhReceptor,'XData',t.Time, 'YData',t.Receptor);

@@ -1,8 +1,6 @@
 classdef ROTimecourseView < handle
     
-    properties ( Access = private ) 
-        Model
-
+    properties ( Access = private )
         ThresholdStyle   = {'Color','r','Linewidth',2,'LineStyle','--',...
             'FontWeight','bold','LabelVerticalAlignment','middle'}; % style for threshold lines
 
@@ -60,7 +58,6 @@ classdef ROTimecourseView < handle
             obj.DataListener = dataListener;
             
             % save objects
-            obj.Model = model;
             obj.Axes = ax;
             
         end % constructor
@@ -70,8 +67,8 @@ classdef ROTimecourseView < handle
     
     methods ( Access = private )
         
-        function update(obj,~,~)
-            t = obj.Model.SimDataTable;
+        function update(obj,srcModel,~)
+            t = srcModel.SimDataTable;
 
             set(obj.lhRO,'XData',t.Time, 'YData',100*t.RO);
             
