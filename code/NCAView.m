@@ -1,7 +1,6 @@
 classdef NCAView < handle
     
-    properties ( Access = private ) 
-        Model
+    properties ( Access = private )
         NCApanel
         GridLayout
         BackgroundColor = [1,1,1]
@@ -67,7 +66,6 @@ classdef NCAView < handle
             obj.DataListener = dataListener;
             
             % save objects
-            obj.Model = model;
             obj.NCAoptions = opt;
             obj.NCApanel = ncapanel;
             obj.GridLayout = gl;
@@ -89,10 +87,10 @@ classdef NCAView < handle
     
     methods ( Access = private )
         
-        function update(obj,~,~)
+        function update(obj,srcModel,~)
 
             % compute NCA parameters and display them in table
-            ncaParameters = sbionca(obj.Model.SimDataTable, obj.NCAoptions);
+            ncaParameters = sbionca(srcModel.SimDataTable, obj.NCAoptions);
             obj.NCAtable.ColumnName = ncaParameters.Properties.VariableNames(2:end);
             obj.NCAtable.Data = ncaParameters(:,2:end);
             

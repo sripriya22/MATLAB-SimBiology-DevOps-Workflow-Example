@@ -15,10 +15,6 @@ classdef LampView < handle
         LampObj
     end
 
-    properties ( Access=private )
-        Model
-    end
-
     properties( Access = private )
         DataListener % listener
     end
@@ -42,7 +38,6 @@ classdef LampView < handle
             obj.DataListener = dataListener;
 
             obj.LampObj = lampObj;
-            obj.Model = model;
 
         end % constructor
 
@@ -68,8 +63,8 @@ classdef LampView < handle
 
     methods ( Access = private )
 
-        function update(obj,~,~)
-                obj.IsOn = obj.Model.ROIsBetweenThresholds;
+        function update(obj,srcModel,~)
+                obj.IsOn = srcModel.ROIsBetweenThresholds;
         end % update
 
     end % private method

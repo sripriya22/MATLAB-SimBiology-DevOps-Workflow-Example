@@ -99,7 +99,7 @@ jobs:
       - name: Run buildtool
         uses: matlab-actions/run-build@v2
         with:
-          tasks: test  # change to compile
+          tasks: compile  # changed from test
 
       # Configure GitHub Pages to accept your artifact uploads
       - name: Setup Pages
@@ -113,12 +113,12 @@ jobs:
         with:
           path: results # Upload results
 
-      # # Upload compiled CTF file to deploy Web App
-      # - name: Upload CTF file
-      #   uses: actions/upload-artifact@v6
-      #   with:
-      #     name: WebApp_CTF
-      #     path: WebAppArchive/*.ctf
+      # Upload compiled CTF file to deploy Web App
+      - name: Upload CTF file
+        uses: actions/upload-artifact@v6
+        with:
+          name: WebApp_CTF
+          path: WebAppArchive/*.ctf
 
       # Publish reports to GitHub Pages so they can be viewed in a browser
       - name: Deploy to GitHub Pages
